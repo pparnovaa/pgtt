@@ -508,19 +508,26 @@ def callculate_optimum(d, p_0, T_0, n, G_0, H_0, rho, l_1, alpha_1, b_1, Delta, 
 st.write(' Зависимость КПД')
 
 
-H_0 = [i for i in list(range(90,111))]
-         
-eta = []
-ucf = []
-for i in H_0:
-    ucf_1 = M.pi*d*n/(2000*i)**0.5
-    ucf.append(ucf_1)
-    eta_ol, alpha = callculate_optimum(d, p_0, T_0, n, G_0, i, ro, l_1, alpha_1e, b_1, delta, b_2, kappa_vs)
-    print(i,eta_ol, alpha,ucf_1)
-    eta.append(eta_ol)
-plt.plot(ucf,eta)
-plt.show()
+    d = [i * 1e-2 for i in list(range(90, 111, 1))]
+    alpha1 = []
+    eta = []
+    ucf = []
 
+
+    fighs = plt.figure()
+    for i in d:
+        ucf_1 = M.pi * i * n / (2000 * H_0) ** 0.5
+        ucf.append(ucf_1)
+
+        eta_ol, alpha = callculate_optimum(i, p_0, T_0, n, G_0, H_0, rho, l_1, alpha_1, b_1, Delta, b_2, kappa_vs)
+        alpha1.append(alpha)
+        eta.append(eta_ol)
+    plt.plot(ucf, eta)
+    plt.ylabel('ηол')
+    plt.xlabel('U/cф')
+    plt.title("Зависимость ηол от U/cф")
+    plt.grid(True)
+    st.pyplot(fighs)
 
 
 
