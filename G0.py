@@ -3,6 +3,7 @@ import streamlit as st
 from iapws import IAPWS97
 import numpy as np
 import pandas as pd
+import math as M
 import matplotlib as plt
 import matplotlib.pyplot as plt
 st.write('# Курсовая работа по курсу "Паровые и газовые турбины"')
