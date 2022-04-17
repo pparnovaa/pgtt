@@ -507,17 +507,17 @@ def callculate_optimum(d, p_0, T_0, n, G_0, H_0, rho, l_1, alpha_1, b_1, Delta, 
 st.write(' Зависимость КПД')
 
 
-
+H_0 = [i for i in list(range(90,110,1))]
+alpha1 = []
 eta = []
 ucf = []
-alp1 = []
-Gr1 = plt.figure()
-for i in d:
-    ucf_1 = M.pi * i * n / (2000 * H_0) ** 0.5
+for i in H_0:
+    ucf_1 = M.pi*d*n/(2000*i)**0.5
     ucf.append(ucf_1)
-    eta_ol, alpha = callculate_optimum(i, p_0, T_0, n, G_0, H_0, rho, l_1, alpha_1, b_1, Delta, b_2, kappa_vs)
-    alp1.append(alpha)
+
+    eta_ol, alpha = callculate_optimum(d, p_0, T_0, n, G_0, i, rho, l_1, alpha_1, b_1, Delta, b_2, kappa_vs)
     eta.append(eta_ol)
+    alpha1.append(alpha)
 
 plt.plot(ucf, eta)
 plt.scatter(ucf, eta)
