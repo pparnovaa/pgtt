@@ -6,6 +6,9 @@ import math as M
 import matplotlib.pyplot as plt
 from sympy import *
 from bokeh.plotting import figure
+from PIL import Image
+image = Image.open('image_2022-05-04_17-55-39.jpg')
+image1 = Image.open('image_2022-05-04_18-03-50.jpg')
 
 st.write('# Курсовая работа по курсу "Паровые и газовые турбины"')
 st.write('# Выполнила: Парнова Екатерина')
